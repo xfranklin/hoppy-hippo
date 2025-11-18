@@ -21,8 +21,14 @@
     const name = document.getElementById("name");
     const number = document.getElementById("number");
     const send = document.getElementById("send");
-    send.addEventListener("click", () => {
-      console.log(name.value, number.value);
-    });
+
+    const handleSubmit = async (e) => {
+      const response = await fetch(".netlify/functions/leave-order", {
+        method: "POST",
+        body: JSON.stringify({ name: name.value, number: number.value })
+      });
+    };
+
+    send.addEventListener("click", handleSubmit);
   </script>
 </html>

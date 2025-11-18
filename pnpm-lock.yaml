@@ -16,6 +16,9 @@ importers:
       "@commitlint/config-conventional":
         specifier: ^20.0.0
         version: 20.0.0
+      "@netlify/functions":
+        specifier: ^5.1.0
+        version: 5.1.0
       editorconfig-checker:
         specifier: ^6.1.1
         version: 6.1.1
@@ -1019,6 +1022,13 @@ packages:
       }
     engines: { node: ">=18.14.0" }
 
+  "@netlify/functions@5.1.0":
+    resolution:
+      {
+        integrity: sha512-LZtiQtf/QzPHIeNDZuIBxx04kmU7lCipWqZ26ejX7mYSB3yj2wvpZfF49kD8B8FoKTydSvgFmBpIcCO5FvpEXA==
+      }
+    engines: { node: ">=18.0.0" }
+
   "@netlify/git-utils@6.0.2":
     resolution:
       {
@@ -1217,6 +1227,13 @@ packages:
     resolution:
       {
         integrity: sha512-ktUb5d58pt1lQGXO5E9S0F1ljM0g+CoQuGTVII0IxBc0apmPq5RI0o3OWLY7U3ZERRiYTg5UfjiMihBEzuZsuw==
+      }
+    engines: { node: ^18.14.0 || >=20 }
+
+  "@netlify/types@2.2.0":
+    resolution:
+      {
+        integrity: sha512-XOWlZ2wPpdRKkAOcQbjIf/Qz7L4RjcSVINVNQ9p3F6U8V6KSEOsB3fPrc6Ly8EOeJioHUepRPuzHzJE/7V5EsA==
       }
     engines: { node: ^18.14.0 || >=20 }
 
@@ -8572,6 +8589,10 @@ snapshots:
       - rollup
       - supports-color
 
+  "@netlify/functions@5.1.0":
+    dependencies:
+      "@netlify/types": 2.2.0
+
   "@netlify/git-utils@6.0.2":
     dependencies:
       execa: 8.0.1
@@ -8677,6 +8698,8 @@ snapshots:
   "@netlify/serverless-functions-api@2.7.1": {}
 
   "@netlify/types@2.1.0": {}
+
+  "@netlify/types@2.2.0": {}
 
   "@netlify/zip-it-and-ship-it@14.1.13(supports-color@10.2.2)":
     dependencies:
