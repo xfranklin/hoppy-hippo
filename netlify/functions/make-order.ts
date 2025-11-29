@@ -27,7 +27,7 @@ export default async (req: Request, context: Context) => {
     });
 
     const data = await googleRes.json();
-    if (data.success !== true) throw new Error("Captcha error");
+    if (data?.success !== true) throw new Error("Captcha error");
 
     const tgResponse = await fetch(
       `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
