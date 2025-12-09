@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="{{ locale }}">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ "META_TITLE" | i18n }}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
+
+    <!-- ┌─┐┌─┐┬  ┬┬┌─┐┌─┐┌┐┌ -->
+    <!-- ├┤ ├─┤└┐┌┘││  │ ││││ -->
+    <!-- └  ┴ ┴ └┘ ┴└─┘└─┘┘└┘ -->
+    <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Playland" />
+    <link rel="manifest" href="/assets/favicon/site.webmanifest" />
+
+    <!-- ┌─┐┌─┐┌─┐┌─┐┬  ┌─┐  ┬ ┬┌─┐┌┐   ┌─┐┌─┐┌┐┌┌┬┐┌─┐ -->
+    <!-- │ ┬│ ││ ││ ┬│  ├┤   │││├┤ ├┴┐  ├┤ │ ││││ │ └─┐ -->
+    <!-- └─┘└─┘└─┘└─┘┴─┘└─┘  └┴┘└─┘└─┘  └  └─┘┘└┘ ┴ └─┘ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Montserrat:wght@200;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ┬┌─┐┌─┐┌┐┌  ┌─┐┌─┐┌┐┌┌┬┐ -->
+    <!-- ││  │ ││││  ├┤ │ ││││ │  -->
+    <!-- ┴└─┘└─┘┘└┘  └  └─┘┘└┘ ┴  -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- ┌─┐┌─┐┌─┐ -->
+    <!-- │  └─┐└─┐ -->
+    <!-- └─┘└─┘└─┘ -->
+    <link href="/assets/lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="/assets/lib/lightbox/css/lightbox.min.css" rel="stylesheet" />
+    <link href="/assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    {% include "components/header.njk" %}
+
+    <main>{{ content | safe }}</main>
+
+    <!-- ┬┌─┐┬  ┬┌─┐┌─┐┌─┐┬─┐┬┌─┐┌┬┐ -->
+    <!-- │├─┤└┐┌┘├─┤└─┐│  ├┬┘│├─┘ │  -->
+    <!--└┘┴ ┴ └┘ ┴ ┴└─┘└─┘┴└─┴┴   ┴  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/lib/wow/wow.min.js"></script>
+    <script src="/assets/lib/easing/easing.min.js"></script>
+    <script src="/assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="/assets/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="/assets/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+  </body>
+</html>

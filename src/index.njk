@@ -1,0 +1,13 @@
+---
+pagination:
+  data: site.langs
+  size: 1
+  alias: locale
+permalink: "{% if locale == 'ro' %}/{% else %}/{{ locale }}/{% endif %}"
+layout: "main.njk"
+---
+
+<section id="cta">
+  <p>Тут можешь добавить форму / кнопку / что угодно.</p>
+  <h2>{{ "META.TITLE" | i18n }}</h2>
+</section>
