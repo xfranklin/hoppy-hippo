@@ -1,0 +1,96 @@
+<!-- Navbar start -->
+<div class="container-fluid border-bottom bg-light wow fadeIn" data-wow-delay="0.1s">
+  <div
+    class="container topbar bg-primary d-none d-lg-block py-2"
+    style="border-radius: 0 0 24px 24px"
+  >
+    <div class="d-flex justify-content-between">
+      <div class="ps-2">
+        {% for lang in site.langs %}
+          <a
+            class="btn btn-sm me-2 {% if lang == locale %}btn-secondary active text-white{% else %}btn-light{% endif %}"
+            href="{% if lang == 'ro' %}/{% else %}/{{ lang }}/{% endif %}"
+            {% if lang == locale %}aria-current="true"{% endif %}
+          >
+            {{ lang | upper }}
+          </a>
+        {% endfor %}
+      </div>
+      <div class="top-link pe-2">
+        <a
+          href="{{ site.social.facebook }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-light btn-sm-square rounded-circle"
+          aria-label="Facebook"
+        >
+          <i class="fab fa-facebook-f text-secondary"></i>
+        </a>
+        <a
+          href="{{ site.social.instagram }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-light btn-sm-square rounded-circle"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram text-secondary"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="container px-0">
+    <nav class="navbar navbar-light navbar-expand-xl py-2">
+      <a href="index.html" class="navbar-brand d-flex align-items-center">
+        <img
+          src="/assets/img/top-logo.png"
+          alt="Hoppy Hippo logo"
+          class="me-2"
+          style="height: 56px"
+        />
+        <div class="d-flex flex-column lh-sm">
+          <h1 class="text-primary display-6 m-0">
+            Hoppy <span class="text-secondary">Hippo</span>
+          </h1>
+        </div>
+      </a>
+      <button
+        class="navbar-toggler py-2 px-3"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarCollapse"
+      >
+        <span class="fa fa-bars text-primary"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav mx-auto">
+          <a href="index.html" class="nav-item nav-link active">Home</a>
+          <a href="about.html" class="nav-item nav-link">About</a>
+          <a href="service.html" class="nav-item nav-link">Services</a>
+        </div>
+        <div class="d-flex me-4">
+          <div id="phone-tada" class="d-flex align-items-center justify-content-center">
+            <a
+              href="tel:{{ site.contact.phoneHref }}"
+              class="position-relative wow tada"
+              data-wow-delay=".9s"
+              aria-label="Call {{ site.contact.phoneDisplay }}"
+            >
+              <i class="fa fa-phone-alt text-primary fa-2x me-4"></i>
+              <div class="position-absolute" style="top: -7px; left: 20px">
+                <span><i class="fa fa-comment-dots text-secondary"></i></span>
+              </div>
+            </a>
+          </div>
+          <div class="d-flex flex-column">
+            <span class="text-primary">Have any questions?</span>
+            <a
+              href="tel:{{ site.contact.phoneHref }}"
+              aria-label="Call {{ site.contact.phoneDisplay }}"
+              ><span class="text-secondary">{{ site.contact.phoneDisplay }}</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>

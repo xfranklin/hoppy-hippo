@@ -137,7 +137,7 @@
 // Flush list items
 //
 // Remove borders and border-radius to keep list group items edge-to-edge. Most
-// useful within other components (e.g., cards).
+// useful within other layout (e.g., cards).
 
 .list-group-flush {
   @include border-radius(0);

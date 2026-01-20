@@ -65,11 +65,23 @@
     console.log($videoSrc);
 
     $("#videoModal").on("shown.bs.modal", function (e) {
-      $("#video").attr("src", $videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0");
+      var videoEl = $("#video").get(0);
+      if (!videoEl || !$videoSrc) {
+        return;
+      }
+      videoEl.muted = true;
+      videoEl.src = $videoSrc;
+      videoEl.play().catch(function () {});
     });
 
     $("#videoModal").on("hide.bs.modal", function (e) {
-      $("#video").attr("src", $videoSrc);
+      var videoEl = $("#video").get(0);
+      if (!videoEl) {
+        return;
+      }
+      videoEl.pause();
+      videoEl.removeAttribute("src");
+      videoEl.load();
     });
   });
 })(jQuery);

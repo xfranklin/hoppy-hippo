@@ -1,0 +1,48 @@
+[
+  {
+    "image": "/assets/img/soft-play.jpg",
+    "price": "PROGRAM_1_PRICE",
+    "title": "PROGRAM_1_NAME",
+    "description": "PROGRAM_1_DESCRIPTION",
+    "benefits": {
+      "age": "PROGRAM_1_BENEFIT_1",
+      "area": "PROGRAM_1_BENEFIT_2",
+      "hours": "PROGRAM_1_BENEFIT_3"
+    },
+    "wowDelay": "0.1s"
+  },
+  {
+    "image": "/assets/img/activity.jpg",
+    "price": "PROGRAM_2_PRICE",
+    "title": "PROGRAM_2_NAME",
+    "description": "PROGRAM_2_DESCRIPTION",
+    "benefits": {
+      "age": "PROGRAM_2_BENEFIT_1",
+      "area": "PROGRAM_2_BENEFIT_2",
+      "hours": "PROGRAM_2_BENEFIT_3"
+    },
+    "wowDelay": "0.3s"
+  },
+  {
+    "image": "/assets/img/big-castle.jpg",
+    "title": "PROGRAM_4_NAME",
+    "price": "PROGRAM_4_PRICE",
+    "description": "PROGRAM_4_DESCRIPTION",
+    "benefits": {
+      "area": "PROGRAM_4_BENEFIT_2",
+      "hours": "PROGRAM_4_BENEFIT_3"
+    },
+    "wowDelay": "0.5s"
+  },
+  {
+    "image": "/assets/img/mic-castle.jpg",
+    "title": "PROGRAM_3_NAME",
+    "price": "PROGRAM_3_PRICE",
+    "description": "PROGRAM_3_DESCRIPTION",
+    "benefits": {
+      "area": "PROGRAM_3_BENEFIT_2",
+      "hours": "PROGRAM_3_BENEFIT_3"
+    },
+    "wowDelay": "0.5s"
+  }
+]

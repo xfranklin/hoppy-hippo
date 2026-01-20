@@ -1,3 +1,12 @@
 {
-  "langs": ["ru", "en", "ro"]
+  "langs": ["ro", "ru", "en"],
+  "contact": {
+    "phoneDisplay": "079 397 411",
+    "phoneHref": "079397411",
+    "email": "hoppyhippoplayland@gmail.com"
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/profile.php?id=61578855251234",
+    "instagram": "https://www.instagram.com/hoppy_hippo_playland"
+  }
 }

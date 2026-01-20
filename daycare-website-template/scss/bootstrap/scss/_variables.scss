@@ -234,7 +234,7 @@ $variable-prefix: bs- !default;
 
 // Gradient
 //
-// The gradient which is added to components if `$enable-gradients` is `true`
+// The gradient which is added to layout if `$enable-gradients` is `true`
 // This gradient is also added to elements with `.bg-gradient`
 // scss-docs-start variable-gradient
 $gradient: linear-gradient(180deg, rgba($white, 0.15), rgba($white, 0)) !default;
@@ -926,7 +926,7 @@ $form-validation-states: (
 // Z-index master list
 //
 // Warning: Avoid customizing these values. They're used for a bird's eye view
-// of components dependent on the z-axis and are designed to all work together.
+// of layout dependent on the z-axis and are designed to all work together.
 
 // scss-docs-start zindex-stack
 $zindex-dropdown: 1000 !default;

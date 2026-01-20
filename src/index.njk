@@ -7,7 +7,9 @@ permalink: "{% if locale == 'ro' %}/{% else %}/{{ locale }}/{% endif %}"
 layout: "main.njk"
 ---
 
-<section id="cta">
-  <p>Тут можешь добавить форму / кнопку / что угодно.</p>
-  <h2>{{ "META.TITLE" | i18n }}</h2>
-</section>
+{% include "components/hero.njk" %}
+{% include "components/about-us.njk" %}
+{% include "components/program.njk" %}
+{% include "components/contact-us.njk" %}
+{% include "components/testimonial.njk" %}
+{% include "components/instagram.njk" %}

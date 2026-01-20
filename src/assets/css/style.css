@@ -190,6 +190,78 @@ h6,
   margin-left: 8px;
 }
 
+/*** Instagram Strip Start ***/
+.instagram-strip {
+  background: #fff;
+}
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.instagram-tile {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: #f1f1f1;
+  aspect-ratio: 1 / 1;
+}
+
+.instagram-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .instagram-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .instagram-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .instagram-tile.is-desktop-hidden {
+    display: none;
+  }
+}
+/*** Instagram Strip End ***/
+
+/*** Video Modal Start ***/
+.modal-video {
+  max-width: 960px;
+  width: calc(100% - 2rem);
+}
+
+.modal-video-content {
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.modal-video-close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  z-index: 2;
+  background: #fff;
+  opacity: 1;
+}
+/*** Video Modal End ***/
+
+/*** Recaptcha Badge Start ***/
+.grecaptcha-badge {
+  visibility: hidden;
+}
+/*** Recaptcha Badge End ***/
+
 @media (min-width: 1200px) {
   .navbar .nav-item .dropdown-menu {
     display: block;
@@ -227,7 +299,9 @@ h6,
 /*** Hero Header ***/
 .hero-header,
 .page-header {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)), url(../img/hero-img.jpg);
+  /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.25)), url(../img/hero-bg.jpg);*/
+  /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.25)), url(../img/bg-new.jpg);*/
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.05)), url(../img/bg-test.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -240,7 +314,7 @@ h6,
   height: 100%;
   min-height: 400px;
   background:
-    linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url(../img/about.jpg);
+    linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url(../img/video-cover.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -330,13 +404,26 @@ h6,
 
 #videoModal .modal-dialog {
   position: relative;
-  max-width: 800px;
+  max-width: 360px;
+  width: min(90vw, 360px);
   margin: 60px auto 0 auto;
 }
 
 #videoModal .modal-body {
   position: relative;
   padding: 0px;
+}
+
+#videoModal .video-modal-frame {
+  width: 100%;
+  aspect-ratio: 320 / 568;
+  background: #000000;
+}
+
+#videoModal .video-modal-player {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 #videoModal .close {
@@ -441,10 +528,12 @@ h6,
 
 .program .program-item .program-img .program-rate {
   position: absolute;
-  width: 100px;
   top: -20px;
   left: 50%;
-  margin-left: -50px;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - 2rem);
+  text-align: center;
   border-radius: 10% / 50%;
 }
 
@@ -671,3 +760,15 @@ h6,
   color: var(--bs-secondary) !important;
 }
 /*** Footer End ***/
+
+/* Smooth scrolling for in-page anchors like #contact */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

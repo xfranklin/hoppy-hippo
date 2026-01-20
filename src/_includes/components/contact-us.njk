@@ -1,0 +1,171 @@
+<!-- Contact Start -->
+<div id="contact" class="container-fluid py-4">
+  <div class="container py-4">
+    <div class="p-4 bg-light rounded">
+      <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px">
+        <h1 class="display-4 mb-3">{{ "CONTACT_TITLE" | i18n }}</h1>
+      </div>
+      <div class="row g-3 g-md-4 mb-4">
+        <div class="col-12 col-md-6 wow fadeIn" data-wow-delay="0.2s">
+          <div class="d-flex w-100 border border-primary p-3 rounded bg-white h-100">
+            <i class="fas fa-envelope fa-2x text-primary me-3"></i>
+            <div>
+              <h4 class="mb-1">{{ "CONTACT_MAIL_US" | i18n }}</h4>
+              <p class="mb-0">
+                <a
+                  href="mailto:{{ site.contact.email }}"
+                  class="text-body"
+                  aria-label="Email {{ site.contact.email }}"
+                  >{{ site.contact.email }}</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 wow fadeIn" data-wow-delay="0.4s">
+          <div class="d-flex w-100 border border-primary p-3 rounded bg-white h-100">
+            <i class="fa fa-phone-alt fa-2x text-primary me-3"></i>
+            <div>
+              <h4 class="mb-1">{{ "CONTACT_PHONE_TITLE" | i18n }}</h4>
+              <p class="mb-0">
+                <a
+                  href="tel:{{ site.contact.phoneHref }}"
+                  class="text-body"
+                  aria-label="Call {{ site.contact.phoneDisplay }}"
+                  >{{ site.contact.phoneDisplay }}</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row g-3 g-md-4">
+        <div class="col-12 col-lg-8 mx-auto wow fadeIn" data-wow-delay="0.2s">
+          <form action="" id="contactForm">
+            <input
+              id="name"
+              type="text"
+              class="w-100 form-control py-2 mb-3 mb-md-4 border-primary"
+              placeholder="{{ "CONTACT_FORM_NAME_PLACEHOLDER" | i18n }}"
+            />
+            <input
+              id="phone"
+              type="tel"
+              class="w-100 form-control py-2 mb-3 mb-md-4 border-primary"
+              placeholder="{{ "CONTACT_FORM_PHONE_PLACEHOLDER" | i18n }}"
+            />
+            <textarea
+              id="message"
+              class="w-100 form-control mb-3 mb-md-4 border-primary"
+              rows="8"
+              cols="10"
+              placeholder="{{ "CONTACT_FORM_MESSAGE_PLACEHOLDER" | i18n }}"
+            ></textarea>
+            <button
+              id="send"
+              class="w-100 btn btn-primary form-control py-2 border-primary text-white bg-primary"
+              type="button"
+            >
+              {{ "CONTACT_FORM_BUTTON" | i18n }}
+            </button>
+            <div id="formStatus" class="text-center small mt-2" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Contact End -->
+<script src="https://www.google.com/recaptcha/api.js?render=6LcwFREsAAAAAG6z3z2lDjokb-YTmq-Mb5jOW_dJ"></script>
+<script>
+  (function () {
+    const form = document.getElementById("contactForm");
+    if (!form) return;
+
+    const nameInput = document.getElementById("name");
+    const phoneInput = document.getElementById("phone");
+    const sendBtn = document.getElementById("send");
+    const statusEl = document.getElementById("formStatus");
+
+    const setStatus = (msg, type = "info") => {
+      if (!statusEl) return;
+      statusEl.textContent = msg || "";
+      statusEl.classList.remove("text-danger", "text-success", "text-muted");
+      if (type === "error") statusEl.classList.add("text-danger");
+      else if (type === "success") statusEl.classList.add("text-success");
+      else statusEl.classList.add("text-muted");
+    };
+
+    const setLoading = (loading) => {
+      if (!sendBtn) return;
+      sendBtn.disabled = !!loading;
+      sendBtn.textContent = loading ? "Sending..." : "Submit";
+    };
+
+    const getRecaptchaToken = async () => {
+      await new Promise((resolve) => {
+        if (window.grecaptcha && grecaptcha.ready) return grecaptcha.ready(resolve);
+        // Wait briefly if script is still initializing
+        const check = () =>
+          window.grecaptcha && grecaptcha.ready
+            ? grecaptcha.ready(resolve)
+            : setTimeout(check, 100);
+        check();
+      });
+      try {
+        const token = await grecaptcha.execute("6LcwFREsAAAAAG6z3z2lDjokb-YTmq-Mb5jOW_dJ", {
+          action: "contact"
+        });
+        return token || null;
+      } catch (e) {
+        return null;
+      }
+    };
+
+    const handleSubmit = async (e) => {
+      if (e) e.preventDefault();
+      const name = nameInput ? nameInput.value.trim() : "";
+      const phone = phoneInput ? phoneInput.value.trim() : "";
+
+      if (!name && !phone) {
+        setStatus("Please provide at least your name or phone.", "error");
+        return;
+      }
+
+      setStatus("", "info");
+      setLoading(true);
+
+      const token = await getRecaptchaToken();
+      if (!token) {
+        setLoading(false);
+        setStatus("Could not verify reCAPTCHA. Please try again.", "error");
+        return;
+      }
+
+      try {
+        const response = await fetch("/.netlify/functions/make-order", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, phone, token })
+        });
+
+        const data = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error((data && (data.message || data.error)) || "Submission failed.");
+        }
+        setStatus("Thank you! We will contact you soon.", "success");
+        if (form) form.reset();
+      } catch (err) {
+        setStatus(
+          err && err.message ? err.message : "Something went wrong. Please try again later.",
+          "error"
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (sendBtn) sendBtn.addEventListener("click", handleSubmit);
+    if (form) form.addEventListener("submit", handleSubmit);
+  })();
+</script>

@@ -1,0 +1,40 @@
+{% if instagram and instagram.posts %}
+  <section class="instagram-strip" aria-label="Instagram">
+    <div class="container-fluid px-0">
+      <div class="container py-4">
+        <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px">
+          <h4
+            class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius"
+          >
+            {{ "INSTAGRAM_LABEL" | i18n }}
+          </h4>
+        </div>
+      </div>
+      <div class="instagram-grid">
+        {% for post in instagram.posts %}
+          {% if loop.index <= 12 %}
+            {% set tileClass = "instagram-tile" %}
+            {% if loop.index > 10 %}
+              {% set tileClass = tileClass + " is-desktop-hidden" %}
+            {% endif %}
+            {% if post.link %}
+              <a
+                class="{{ tileClass }}"
+                href="{{ post.link }}"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram post {{ loop.index }}"
+              >
+                <img src="/{{ post.path }}" alt="Instagram post {{ loop.index }}" loading="lazy" />
+              </a>
+            {% else %}
+              <div class="{{ tileClass }}">
+                <img src="/{{ post.path }}" alt="Instagram post {{ loop.index }}" loading="lazy" />
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endif %}
