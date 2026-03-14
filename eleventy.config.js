@@ -2,6 +2,7 @@ import i18nPlugin from "eleventy-plugin-i18n";
 import { createRequire } from "node:module";
 
 // Use createRequire to load JSON in environments that don't support ESM JSON import assertions
+
 const require = createRequire(import.meta.url);
 const ro = require("./src/i18n/ro.json");
 const ru = require("./src/i18n/ru.json");
